@@ -1,0 +1,13 @@
+{
+    "pi_web_api": {
+        "url": "https://corp-web/piwebapi",
+        "crt": "corp-web.crt"
+    },
+    "kafka": {
+        "topic": "iot-readings"
+    },
+    "logger": {
+        "log_directory": "c:\\temp\\",
+        "log_filename": "kafka_consumer_piwebapi.log"
+    }
+}

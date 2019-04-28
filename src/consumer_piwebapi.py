@@ -1,0 +1,9 @@
+
+
+
+
+
+
+
+def consume():
+    raise ExceptionNotImplemented
