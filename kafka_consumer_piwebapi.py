@@ -1,3 +1,3 @@
-from src.consumer_piwebapi import consume
+from src.consumer_piwebapi import main
 
-consume()
+main()

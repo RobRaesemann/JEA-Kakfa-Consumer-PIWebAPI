@@ -2,12 +2,19 @@
     "pi_web_api": {
         "url": "https://corp-web/piwebapi",
         "crt": "corp-web.crt"
-    },
+        },
     "kafka": {
-        "topic": "iot-readings"
-    },
+        "topic": "iot-readings",
+        "interval_secs": "1",
+        "server": "localhost:9092"
+        },
     "logger": {
         "log_directory": "c:\\temp\\",
         "log_filename": "kafka_consumer_piwebapi.log"
+        },
+    "webid_cache": {
+        "cache_filename": "pi_webid_cache.pkl",
+        "refresh_from_foundation_db_min": "5"
+        }
     }
 }

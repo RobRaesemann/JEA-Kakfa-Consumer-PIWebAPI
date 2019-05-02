@@ -11,9 +11,20 @@ def _get_config(key):
     
     return data[key]
 
-
 def get_pi_web_api_url():
     return _get_config("pi_web_api")["url"]    
 
 def get_pi_web_api_crt():
     return os.path.join(CONFIG_PATH, _get_config("pi_web_api")["crt"])
+
+def get_kafka_topic():
+    return _get_config("kafka")["topic"]
+
+def get_kafka_interval():
+    return _get_config("kafka")["interval_secs"]
+
+def get_kafka_server():
+    return _get_config("kafka")["server"]
+
+def get_kafka_consumer_group():
+    return _get_config("kafka")["consumer_group"]

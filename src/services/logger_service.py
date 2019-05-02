@@ -24,3 +24,9 @@ LOG.addHandler(FH)
 
 def info(message):
     LOG.info(message)
+
+def error(message):
+    LOG.error(message)
+
+def exception(message):
+    LOG.exception(message)
