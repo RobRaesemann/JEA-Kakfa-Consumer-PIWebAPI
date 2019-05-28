@@ -28,3 +28,9 @@ def get_kafka_server():
 
 def get_kafka_consumer_group():
     return _get_config("kafka")["consumer_group"]
+
+def get_cache_filename():
+    return _get_config("webid_cache")["cache_filename"]
+
+def get_aggregator_prefix():
+    return _get_config("kafka")["aggregator_prefix"]

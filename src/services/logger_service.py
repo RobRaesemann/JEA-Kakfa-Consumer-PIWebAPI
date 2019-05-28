@@ -3,7 +3,6 @@ import sys
 import logging
 from logging import handlers
 
-
 LOGDIR = os.path.join(os.getcwd(), 'logs')
 LOGFILE = os.path.join(LOGDIR, 'output.log')
 

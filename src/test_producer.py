@@ -8,7 +8,7 @@ from datetime import datetime
 import time
 
 
-assets = ["robinwood.transformer1","robinwood.transformer2","robinwood.transformer3"]
+assets = ["http1.robinwood.transformer1","http1.robinwood.transformer2","http1.robinwood.transformer3"]
 
 producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
                             api_version=(0, 11),
@@ -23,8 +23,8 @@ def _create_readings():
         readings = dict()
         np.random.seed(int(time.time()))
         rand_readings = np.random.random(size=2)
-        readings['oil_temp'] = rand_readings[0]
-        readings['otc_top_temp'] = rand_readings[1] 
+        readings['top_oil_temp'] = rand_readings[0]
+        readings['ltc_tank_temp'] = rand_readings[1] 
 
         read['asset'] = asset
         read['readings'] = readings

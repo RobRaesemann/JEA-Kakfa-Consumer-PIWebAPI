@@ -1,3 +1,5 @@
-from src.consumer_piwebapi import main
+from src.consumer_piwebapi import consume
 
-main()
+if __name__ == '__main__':
+
+    consume()

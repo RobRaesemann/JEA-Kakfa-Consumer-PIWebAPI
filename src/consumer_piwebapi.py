@@ -1,11 +1,9 @@
 import asyncio
 
-from src.services.kafka_service import consume()
+from src.services.kafka_service import consume
 
-async def main():
+async def consume_kafka():
     """
 
-    TODO: Explore how to call this async
     """
-
-    consume()
+    asyncio.Task(consume())
