@@ -1,3 +1,9 @@
+"""
+Our Config Service provides a mechanism for getting settings out of the
+config.json file.
+"""
+
+
 import os
 import json
 
@@ -34,3 +40,6 @@ def get_cache_filename():
 
 def get_aggregator_prefix():
     return _get_config("kafka")["aggregator_prefix"]
+
+def get_kafka_timezone():
+    return _get_config("kafka")["timezone"]

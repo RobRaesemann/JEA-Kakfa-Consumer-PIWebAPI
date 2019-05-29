@@ -1,3 +1,10 @@
+"""
+Our Logging Service provides a round-robin rolling log. This is a relatively
+simple implementation and there are multiple add-ins for Python logging that would 
+allow us to log locally and also send higher level acceptions to a central console
+if needed in the future.
+"""
+
 import os
 import sys
 import logging
@@ -8,7 +15,7 @@ LOGFILE = os.path.join(LOGDIR, 'output.log')
 
 os.makedirs(LOGDIR, exist_ok=True)
 
-LOG = logging.getLogger('DataPipeline')
+LOG = logging.getLogger('PI_KAFKA_CONSUMER')
 LOG.setLevel(logging.INFO)
 FORMAT = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 

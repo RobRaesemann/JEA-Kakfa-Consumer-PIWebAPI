@@ -8,14 +8,15 @@
         "interval_secs": "1",
         "server": "localhost:9092",
         "consumer_group": "pi-group",
-        "aggregator_prefix": "http1."
+        "aggregator_prefix": "http1.",
+        "timezone": "America/New_York"
         },
     "logger": {
         "log_directory": "c:\\temp\\",
         "log_filename": "kafka_consumer_piwebapi.log"
         },
     "webid_cache": {
-        "cache_filename": "..\\data\\pi_webid_cache.pkl",
+        "cache_filename": ".\\data\\pi_webid_cache.pkl",
         "refresh_from_foundation_db_min": "5"
         },
     "foundation_db": {
