@@ -2,8 +2,6 @@
 Our Config Service provides a mechanism for getting settings out of the
 config.json file.
 """
-
-
 import os
 import json
 
@@ -43,3 +41,12 @@ def get_aggregator_prefix():
 
 def get_kafka_timezone():
     return _get_config("kafka")["timezone"]
+
+def get_kafka_ssl_password():
+    return _get_config("kafka")["ssl_password"]
+
+def get_kafka_cer_filename():
+    return _get_config("kafka")["cer_filename"]
+
+def get_kafka_pem_filename():
+    return _get_config("kafka")["pem_filename"]

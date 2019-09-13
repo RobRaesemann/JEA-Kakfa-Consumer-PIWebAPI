@@ -6,10 +6,13 @@
     "kafka": {
         "topic": "iot-readings",
         "interval_secs": "1",
-        "server": "localhost:9092",
+        "server": "jeainnova2d1.corp.jea.com:9093",
         "consumer_group": "pi-group",
         "aggregator_prefix": "http1.",
-        "timezone": "America/New_York"
+        "timezone": "America/New_York",
+        "ssl_password": "changeit",
+        "cer_filename": "jearootca.cer",
+        "pem_filename": "testkafka.pem"
         },
     "logger": {
         "log_directory": "c:\\temp\\",

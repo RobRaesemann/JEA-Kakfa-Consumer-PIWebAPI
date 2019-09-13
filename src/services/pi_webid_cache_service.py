@@ -3,12 +3,7 @@ Our Pi WebId Cache Service provides a way for us to keep a dictionary of
 asset names to PI WebId translations. This should make processing Kafka 
 messages faster. 
 
-
-
 """
-
-
-
 import pickle
 import os
 import json
@@ -22,13 +17,6 @@ from src.services.logger_service import LOG
 
 CACHE_FILENAME = get_cache_filename()
 
-# def add_web_id_to_pi_values(pi_values):
-#     """
-
-#     """
-#     for pi_value in pi_values:
-#         print(pi_value)
-
 def save_tag_dict(tag_dict):
 
     try:
@@ -37,7 +25,6 @@ def save_tag_dict(tag_dict):
         outfile.close()
     except Exception as ex:
         LOG.exception(f'Exception saving pi webid cache file: {ex}')
-
 
 def load_cache():
     try:

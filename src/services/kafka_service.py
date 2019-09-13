@@ -1,7 +1,5 @@
 # Our Kafka Service consumes the messages from the Kafka topic and processes
 # them before sending to PI.
-
-
 import asyncio
 from kafka import KafkaConsumer
 import time
@@ -10,7 +8,8 @@ import datetime
 from pytz import timezone
 
 from src.services.config_service import get_kafka_interval,get_kafka_topic, \
-    get_kafka_server,get_kafka_consumer_group,get_aggregator_prefix,get_kafka_timezone
+    get_kafka_server,get_kafka_consumer_group,get_aggregator_prefix,get_kafka_timezone, \
+    get_kafka_pem_filename, get_kafka_cer_filename, get_kafka_ssl_password
 from src.services.pi_service import post_data_to_pi
 from src.services.foundation_db_service import get_tags_going_to_pi
 from src.services.pi_webid_cache_service import get_tag_webid_cache
@@ -20,6 +19,9 @@ CONSUMER_GROUP = get_kafka_consumer_group()
 KAFKA_SERVER = get_kafka_server()
 LOCAL_TZ = get_kafka_timezone()
 TAG_PREFIX = get_aggregator_prefix()
+PEM_FILENAME = get_kafka_pem_filename()
+CER_FILENAME = get_kafka_cer_filename()
+SSL_PASSWORD = get_kafka_ssl_password()
 
 tag_webid_cache = None
 
@@ -31,6 +33,11 @@ tag_webid_cache = None
 # needed, although this has not been tested.
 consumer = KafkaConsumer(KAFKA_TOPIC, auto_offset_reset='earliest',
                              bootstrap_servers=[KAFKA_SERVER],
+                             security_protocol='SSL',
+                             ssl_cafile=f'certs\\{CER_FILENAME}',
+                             ssl_certfile=f'certs\\{PEM_FILENAME}',
+                             ssl_keyfile=f'certs\\{PEM_FILENAME}',
+                             ssl_password=SSL_PASSWORD,
                              enable_auto_commit=True,
                              group_id=CONSUMER_GROUP,
                              api_version=(0, 10),
@@ -80,7 +87,7 @@ def build_pi_webapi_payload(pi_values):
             items = []
             reading['WebId'] = tag_webid_cache[tagname]
             localtz = timezone(LOCAL_TZ)
-            ts_temp = datetime.datetime.strptime(value['timestamp'], '%m/%d/%Y %H:%M:%S') #.isoformat()
+            ts_temp = datetime.datetime.strptime(value['timestamp'], '%m/%d/%Y %H:%M:%S')
             ts = localtz.localize(ts_temp).isoformat()
             item['Timestamp'] = ts
             item['Value'] = value['value']
